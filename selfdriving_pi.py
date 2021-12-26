@@ -36,7 +36,7 @@ time.sleep(2.0)
 
 relevanz = 0.65
 korrektur = 7 #(+ = nach links (um grad))
-v = 20
+v = 20 #velocity
 
 StepPinBackward = 13
 StepPinForward = 6
@@ -93,6 +93,8 @@ def forward(winkel, bild, vI, achsenlaenge=30, achsenabstand=23):
         StepperLinks.ChangeDutyCycle(vI)
         
     else:
+        #vA = v Außenrad vI = Innenrad (Kurve)
+        #___Differentialgetriebe___#
         vA = vI * (1 + (1 / math.pi) * (1 - ((2 * math.pi * (achsenabstand / math.tan(math.radians(dwinkel)))) / (2 * math.pi * (achsenabstand / math.tan(math.radians(dwinkel)) + achsenlaenge)))))
         #vA = 20
         if rechtsKurve:
